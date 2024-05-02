@@ -1,0 +1,7 @@
+[tests]
+run = ["none"]
+comments = ["missing and outdated dev-dependencies"]
+
+[features]
+hide = ["all", "jetscii", "benchmarks", "galil-seiferas", "test-set", "pattern"]
+

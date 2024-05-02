@@ -1,0 +1,8 @@
+[tests]
+run = ["none"]
+comments = ["jemallocator/default dependency is needed"]
+
+[package]
+supported-arches = ["x86_64", "aarch64", "ppc64le"]
+
+

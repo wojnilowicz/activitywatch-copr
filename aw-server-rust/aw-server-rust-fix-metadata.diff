@@ -1,0 +1,13 @@
+diff -Naur a/aw-server/Cargo.toml b/aw-server/Cargo.toml
+--- a/aw-server/Cargo.toml	2024-04-06 00:26:41.000000000 +0200
++++ b/aw-server/Cargo.toml	2024-04-28 19:51:51.869997598 +0200
+@@ -38,9 +38,3 @@
+ 
+ [target.'cfg(all(target_os="linux", target_arch="x86"))'.dependencies]
+ jemallocator = "0.5.0"
+-
+-[target.'cfg(target_os="android")'.dependencies]
+-jni = { version = "0.20", default-features = false }
+-libc = "0.2"
+-android_logger = "0.13"
+-openssl-sys = { version = "0.9.82", features = ["vendored"]}

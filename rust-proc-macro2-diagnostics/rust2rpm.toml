@@ -1,0 +1,3 @@
+[tests]
+skip = ["main"]
+comments = ["skip integration tests due to use of undeclared crate or module diagnostic_example"]

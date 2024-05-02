@@ -1,0 +1,4 @@
+[features]
+# otherwise "no `Toml` in `providers`" when running tests
+enable-all = true
+

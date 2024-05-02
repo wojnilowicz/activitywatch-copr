@@ -1,0 +1,3 @@
+[tests]
+skip = ["'src/split.rs'"]
+comments = ["no method named `as_str` found for struct `std::str::RSplit"]

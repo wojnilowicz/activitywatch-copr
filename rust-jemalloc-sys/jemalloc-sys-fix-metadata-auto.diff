@@ -1,0 +1,16 @@
+--- jemalloc-sys-0.5.4+5.3.0-patched/Cargo.toml	1970-01-01T00:00:01+00:00
++++ jemalloc-sys-0.5.4+5.3.0-patched/Cargo.toml	2024-04-28T16:44:05.230459+00:00
+@@ -12,7 +12,7 @@
+ [package]
+ edition = "2018"
+ name = "jemalloc-sys"
+-version = "0.5.4+5.3.0-patched"
++version = "0.5.4"
+ authors = [
+     "Alex Crichton <alex@alexcrichton.com>",
+     "Gonzalo Brito Gadeschi <gonzalobg88@gmail.com>",
+@@ -68,3 +68,4 @@
+ 
+ [badges.maintenance]
+ status = "actively-developed"
++

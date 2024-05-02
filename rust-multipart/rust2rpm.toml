@@ -1,0 +1,6 @@
+[package]
+summary = "Extension for HTTP libraries that provides support for POST requests"
+
+[features]
+hide = ["default", "mock", "nightly", "bench", "hyper", "iron", "nickel", "rocket", "clippy"]
+

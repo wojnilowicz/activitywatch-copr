@@ -1,0 +1,17 @@
+{
+    "name": "aw-webui",
+    "version": "1.0.0",
+    "private": true,
+    "description": "A webui for ActivityWatch built in Vue.js",
+    "author": "ActivityWatch Developers",
+    "license": "MPL-2.0",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "test": "jest",
+        "test:unit": "vue-cli-service test:unit",
+        "test:e2e": "vue-cli-service test:e2e",
+        "lint": "vue-cli-service lint",
+        "lint_old": "eslint --ignore-path=.gitignore --ext .vue,.js,.ts ."
+    }
+}
