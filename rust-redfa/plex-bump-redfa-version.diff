@@ -1,0 +1,12 @@
+diff -Naur a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	1970-01-01 01:00:01.000000000 +0100
++++ b/Cargo.toml	2024-04-29 18:14:52.424808863 +0200
+@@ -43,7 +43,7 @@
+ version = "1.0"
+ 
+ [dependencies.redfa]
+-version = "0.0.2"
++version = "0.0.3"
+ optional = true
+ 
+ [dependencies.syn]

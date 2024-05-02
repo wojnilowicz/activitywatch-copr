@@ -1,0 +1,9 @@
+--- state-0.6.0/Cargo.toml	1970-01-01T00:00:01+00:00
++++ state-0.6.0/Cargo.toml	2024-05-02T18:01:08.031923+00:00
+@@ -48,6 +48,3 @@
+ [features]
+ tls = []
+ 
+-[target."cfg(loom)".dependencies.loom]
+-version = "0.5"
+-features = ["checkpoint"]
