@@ -19,13 +19,15 @@ Patch:          state-fix-metadata-auto.diff
 BuildRequires:  cargo-rpm-macros >= 24
 
 %global _description %{expand:
-Library for safe and effortless global and thread-local state management}
+A library for safe and effortless global and thread-local state
+management.}
 
 %description %{_description}
 
 %package        devel
 Summary:        %{summary}
 BuildArch:      noarch
+Provides:       bundled(crate(thread_local)) = 1.0.1
 
 %description    devel %{_description}
 
@@ -35,6 +37,8 @@ use the "%{crate}" crate.
 %files          devel
 %license %{crate_instdir}/LICENSE-APACHE
 %license %{crate_instdir}/LICENSE-MIT
+%license %{crate_instdir}/src/thread_local/LICENSE-APACHE
+%license %{crate_instdir}/src/thread_local/LICENSE-MIT
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
 
@@ -74,8 +78,6 @@ use the "tls" feature of the "%{crate}" crate.
 
 %install
 %cargo_install
-rm %{buildroot}/%{crate_instdir}/src/thread_local/LICENSE-APACHE
-rm %{buildroot}/%{crate_instdir}/src/thread_local/LICENSE-MIT
 
 %if %{with check}
 %check

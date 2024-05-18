@@ -1,4 +1,3 @@
-%bcond_without check
 %global srcname aw-core
 %global commit 3b83ab542406349b3d5e601318289b77d23d906f
 %global short_commit %(c=%{commit}; echo ${c:0:7})
@@ -9,7 +8,7 @@ Release:        %autorelease
 Summary:        Core library for ActivityWatch
 
 License:        MPL-2.0
-URL:            https://github.com/ActivityWatch/%{srcname}
+URL:            https://github.com/ActivityWatch/aw-core
 Source:         %{url}/archive/%{commit}/%{srcname}-%{short_commit}.tar.gz
 
 BuildArch:      noarch
@@ -33,7 +32,8 @@ Summary:    %{summary}
 sed -ri '/^[[:blank:]]*pytest-cov\b/d' pyproject.toml
 sed -ri '/^[[:blank:]]*pylint\b/d' pyproject.toml
 sed -ri '/^[[:blank:]]*black\b/d' pyproject.toml
-# works also 3.9 on f39 and 3.11 on f40, so unpinning
+
+# works also with 3.9 on f39 and 3.11 on f40, so unpinning
 sed -ri 's/platformdirs = "3.10"/platformdirs = "^3.9"/' pyproject.toml
 
 %generate_buildrequires

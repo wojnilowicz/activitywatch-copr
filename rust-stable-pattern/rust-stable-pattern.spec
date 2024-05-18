@@ -18,7 +18,7 @@ Source2:        https://raw.githubusercontent.com/SergioBenitez/stable-pattern/m
 BuildRequires:  cargo-rpm-macros >= 24
 
 %global _description %{expand:
-Stable port of std::str::Pattern and friends}
+Stable port of std::str::Pattern and friends.}
 
 %description %{_description}
 

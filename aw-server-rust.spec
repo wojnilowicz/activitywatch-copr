@@ -35,7 +35,7 @@ sed -ri 's/version = "0.12.1"/version = "0.12.3-b16.dev+%{short_commit}"/' aw-se
 # remove Android dependencies
 sed -ri '/target_os="android"/,+4d' aw-server/Cargo.toml
 
-# remove unused depndency
+# remove unused dependency
 sed -ri '/^[[:blank:]]*multipart\b/d' aw-server/Cargo.toml
 
 # jemallocator will not be packaged for Fedora, so remove it
