@@ -1,3 +1,0 @@
-[tests]
-skip = ["'src/lib.rs'"]
-comments = ["failed to resolve: use of undeclared crate or module `pear`"]

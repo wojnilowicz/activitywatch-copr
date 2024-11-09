@@ -1,6 +1,0 @@
-[package]
-summary = "An implementation of regexes, supporting a relatively rich set of features"
-
-[features]
-enable-all = true
-

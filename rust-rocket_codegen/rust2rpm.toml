@@ -1,3 +1,0 @@
-[tests]
-run = ["none"]
-comments = ["can't find crate for `rocket`"]

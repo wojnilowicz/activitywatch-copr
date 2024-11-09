@@ -1,6 +1,0 @@
-[features]
-hide = ["mtls", "x509-parser"]
-
-[tests]
-skip = ["'src/header/accept.rs'", "'src/header/content_type.rs'", "'src/header/header.rs'", "'src/header/media_type.rs'", "'src/method.rs'", "'src/parse/uri/error.rs'", "'src/raw_str.rs'", "'src/status.rs'", "'src/uri/absolute.rs'", "'src/uri/asterisk.rs'", "'src/uri/authority.rs'", "'src/uri/fmt/formatter.rs'", "'src/uri/fmt/from_uri_param.rs'", "'src/uri/fmt/uri_display.rs'", "'src/uri/host.rs'", "'src/uri/origin.rs'", "'src/uri/path_query.rs'", "'src/uri/reference.rs'", "'src/uri/segments.rs'", "'src/uri/uri.rs'"]
-comments = ["can't find crate for `rocket`", "skip tls as it refers to non-existing /../../examples/tls/private/"]

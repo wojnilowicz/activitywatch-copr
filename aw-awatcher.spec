@@ -1,15 +1,15 @@
 # * no tests available
 %bcond_with check
 
-%global commit0 be59315e8a7c7be3bbeafc60b68a06d1507b2a2a
+%global commit0 5b8c90a69c27caeee52694c80af42664ae1b90f0
 %global short_commit0 %(c=%{commit0}; echo ${c:0:7})
 
 %global url1 https://github.com/ActivityWatch/aw-server-rust
-%global commit1 448312d410980d4a92a0fb4d4bb3fa3494cf6c89
+%global commit1 a0cdef90cf86cd8d2cc89723f5751c1123ae7e2b
 %global short_commit1 %(c=%{commit1}; echo ${c:0:7})
 
 Name:           aw-awatcher
-Version:        0.2.5^20240507.%{short_commit0}
+Version:        0.3.0^20241109.%{short_commit0}
 Release:        %autorelease
 Summary:        A window activity and idle watcher
 
@@ -201,10 +201,21 @@ BuildRequires:  help2man
 tar -xf %{SOURCE1} --strip-components 1 aw-server-rust-%{commit1}/{aw-client-rust,aw-models}
 
 # don't download anything from the internet
-sed -ri 's|git = "https://github.com/ActivityWatch/aw-server-rust", rev = "448312d"|path = "../aw-client-rust"|' watchers/Cargo.toml
+sed -ri 's|git = "https://github.com/ActivityWatch/aw-server-rust", rev = "656f3c9"|path = "../aw-client-rust"|' watchers/Cargo.toml
 
-# works with 0.24.7 too
-sed -ri 's/image = \{ version = "0.25.1" \}/image = \{ version = "0.24.7" \}/' Cargo.toml
+# switch to versions available in Fedora
+sed -ri 's/image = \{ version = "0.25.5" \}/image = \{ version = "0.25.2" \}/ 
+         s/tokio = \{ version = "1.41.1" \}/tokio = \{ version = "1.41.0" \}/ 
+         s/fern = \{ version = "0.7.0",/fern = \{ version = "0.6.2",/ 
+         s/anyhow = "1.0.93"/anyhow = "1.0.90"/ 
+         s/serde = "1.0.214"/serde = "1.0.210"/' Cargo.toml
+sed -ri 's/zbus = \{version = "5.1.0",/zbus = \{ version = "4.4.0",/ 
+         s/wayland-protocols = \{ version = "0.32.5",/wayland-protocols = \{ version = "0.31.2",/ 
+         s/wayland-protocols-wlr = \{ version = "0.3.5",/wayland-protocols-wlr = \{ version = "0.2.0",/ 
+         s/wayland-protocols-plasma = \{ version = "0.3.5",/wayland-protocols-plasma = \{ version = "0.2.0",/ 
+         s/gethostname = "0.5.0"/gethostname = "0.4.3"/ 
+         s/serde_json = "1.0.132"/serde_json = "1.0.131"/ 
+         s/serde_default = "0.2.0"/serde_default = "0.1.0"/' watchers/Cargo.toml
 
 # aw-client-rust is just a dependency, so it doesn't need its dev dependencies
 sed -ri '/dev-dependencies/,+4d' aw-client-rust/Cargo.toml
@@ -220,7 +231,7 @@ sed -ri '/dev-dependencies/,+4d' aw-client-rust/Cargo.toml
 
 %install
 %cargo_install
-# prefix with aw- in order to be detected a watcher in aw-qt
+# prefix with aw- in order to be detected as a watcher in aw-qt
 mv %{buildroot}%{_bindir}/{awatcher,%{name}}
 mkdir -p %{buildroot}%{_mandir}/man1
 help2man %{buildroot}%{_bindir}/%{name} -o %{buildroot}%{_mandir}/man1/%{name}.1

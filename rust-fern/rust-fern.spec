@@ -2,22 +2,24 @@
 %bcond_without check
 %global debug_package %{nil}
 
-%global crate plex
+%global crate fern
 
-Name:           rust-plex
-Version:        0.3.0
+Name:           rust-fern
+Version:        0.6.2
 Release:        %autorelease
-Summary:        Syntax extension for writing lexers and parsers
+Summary:        Simple, efficient logging
 
-License:        MIT OR Apache-2.0
-URL:            https://crates.io/crates/plex
+License:        MIT
+URL:            https://crates.io/crates/fern
 Source:         %{crates_source}
-Patch0:         plex-bump-redfa-version.diff
+# Manually created patch for downstream crate metadata changes
+# * drop example-only dependency on clap ^2
+Patch:          fern-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 
 %global _description %{expand:
-A syntax extension for writing lexers and parsers.}
+Simple, efficient logging.}
 
 %description %{_description}
 
@@ -31,8 +33,9 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-%license %{crate_instdir}/LICENSE-APACHE
-%license %{crate_instdir}/LICENSE-MIT
+%license %{crate_instdir}/LICENSE
+%doc %{crate_instdir}/CHANGELOG.md
+%doc %{crate_instdir}/CONTRIBUTING.md
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
 
@@ -48,57 +51,71 @@ use the "default" feature of the "%{crate}" crate.
 %files       -n %{name}+default-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+lalr-devel
+%package     -n %{name}+chrono-devel
 Summary:        %{summary}
 BuildArch:      noarch
 
-%description -n %{name}+lalr-devel %{_description}
+%description -n %{name}+chrono-devel %{_description}
 
 This package contains library source intended for building other packages which
-use the "lalr" feature of the "%{crate}" crate.
+use the "chrono" feature of the "%{crate}" crate.
 
-%files       -n %{name}+lalr-devel
+%files       -n %{name}+chrono-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+lexer-devel
+%package     -n %{name}+colored-devel
 Summary:        %{summary}
 BuildArch:      noarch
 
-%description -n %{name}+lexer-devel %{_description}
+%description -n %{name}+colored-devel %{_description}
 
 This package contains library source intended for building other packages which
-use the "lexer" feature of the "%{crate}" crate.
+use the "colored" feature of the "%{crate}" crate.
 
-%files       -n %{name}+lexer-devel
+%files       -n %{name}+colored-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+parser-devel
+%package     -n %{name}+date-based-devel
 Summary:        %{summary}
 BuildArch:      noarch
 
-%description -n %{name}+parser-devel %{_description}
+%description -n %{name}+date-based-devel %{_description}
 
 This package contains library source intended for building other packages which
-use the "parser" feature of the "%{crate}" crate.
+use the "date-based" feature of the "%{crate}" crate.
 
-%files       -n %{name}+parser-devel
+%files       -n %{name}+date-based-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+redfa-devel
+%package     -n %{name}+libc-devel
 Summary:        %{summary}
 BuildArch:      noarch
 
-%description -n %{name}+redfa-devel %{_description}
+%description -n %{name}+libc-devel %{_description}
 
 This package contains library source intended for building other packages which
-use the "redfa" feature of the "%{crate}" crate.
+use the "libc" feature of the "%{crate}" crate.
 
-%files       -n %{name}+redfa-devel
+%files       -n %{name}+libc-devel
+%ghost %{crate_instdir}/Cargo.toml
+
+%package     -n %{name}+meta-logging-in-format-devel
+Summary:        %{summary}
+BuildArch:      noarch
+
+%description -n %{name}+meta-logging-in-format-devel %{_description}
+
+This package contains library source intended for building other packages which
+use the "meta-logging-in-format" feature of the "%{crate}" crate.
+
+%files       -n %{name}+meta-logging-in-format-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# drop one example program that pulls in clap ^2
+rm examples/cmd-program.rs
 
 %generate_buildrequires
 %cargo_generate_buildrequires
